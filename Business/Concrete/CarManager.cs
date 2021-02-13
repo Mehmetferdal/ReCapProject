@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,9 +27,19 @@ namespace Business.Concrete
             return _carDal.GetAll(c => c.BrandId == Id);
         }
 
+        public List<Car> GetAllByColorId(int Id)
+        {
+            return _carDal.GetAll(c => c.ColorId == Id);
+        }
+
         public List<Car> GetByUnitPrice(decimal min, decimal max)
         {
             return _carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max);
+        }
+
+        public List<CarDetailDto> GetCarDetailDtos()
+        {
+            return _carDal.GetCarDetailDtos();
         }
     }
 }

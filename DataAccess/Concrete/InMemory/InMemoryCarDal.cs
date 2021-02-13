@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>
             {
-                new Car{Id=1,BrandId=1,ColorId=1,DailyPrice=200,Description="Hasarsız",ModelYear=2020},
-                new Car{Id=2,BrandId=1,ColorId=2,DailyPrice=220,Description="Hasarlı",ModelYear=2021},
-                new Car{Id=3,BrandId=2,ColorId=1,DailyPrice=230,Description="Ağır Hasarlı",ModelYear=2019},
+                new Car{CarId=1,CarName="Opel",BrandId=1,ColorId=1,DailyPrice=200,Description="Hasarsız",ModelYear=2020},
+                new Car{CarId=2,CarName="Bmw",BrandId=1,ColorId=2,DailyPrice=220,Description="Hasarlı",ModelYear=2021},
+                new Car{CarId=3,CarName="Volvo",BrandId=2,ColorId=1,DailyPrice=230,Description="Ağır Hasarlı",ModelYear=2019},
             };
 
         }
@@ -28,7 +29,7 @@ namespace DataAccess.Concrete.InMemory
 
         public void Delete(Car car)
         {
-            Car carToDelete = _cars.SingleOrDefault(c => c.Id == car.Id);
+            Car carToDelete = _cars.SingleOrDefault(c => c.CarId == car.CarId);
             _cars.Remove(carToDelete);
         }
 
@@ -49,12 +50,17 @@ namespace DataAccess.Concrete.InMemory
 
         public List<Car> GetById(int Id)
         {
-            return _cars.Where(c => c.Id == Id).ToList();
+            return _cars.Where(c => c.CarId == Id).ToList();
+        }
+
+        public List<CarDetailDto> GetCarDetailDtos()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Car car)
         {
-            Car carToUpdate = _cars.SingleOrDefault(p => p.Id == car.Id);
+            Car carToUpdate = _cars.SingleOrDefault(p => p.CarId == car.CarId);
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;
