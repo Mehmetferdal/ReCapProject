@@ -14,9 +14,19 @@ namespace ConsoleUI
             //BrandTest();
             //ColorTest();
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetailDtos())
+            var result = carManager.GetCarDetailDtos();
+            if (result.Success)
             {
-                Console.WriteLine(car.CarName + " " + car.BrandName + " " + car.ColorName + " " + car.DailyPrice);
+                foreach (var car in carManager.GetCarDetailDtos().Data)
+                {
+                    Console.WriteLine(car.CarName + " " + car.BrandName + " " + car.ColorName + " " + car.DailyPrice);
+                    Console.WriteLine(result.Message);
+
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
             }
 
         }
@@ -42,7 +52,7 @@ namespace ConsoleUI
         private static void CarManagerTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.ModelYear);
             }
