@@ -21,12 +21,36 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.CarName.Length < 2)
+            //if (car.CarName.Length < 2)
+            //{
+            //    return new ErrorResult(Messages.NameInvalid);
+            //}
+            if (car.CarName == null)
             {
-                return new ErrorResult(Messages.CarNameInvalid);
+                return new ErrorResult(Messages.Alert);
             }
             _carDal.Add(car);
-            return new SuccessResult(Messages.CarAdded);
+            return new SuccessResult(Messages.Added);
+            
+
+        }
+        public IResult Update(Car car)
+        {
+            if (car.CarName != null)
+            {
+                return new ErrorResult(Messages.Alert);
+            }
+            _carDal.Update(car);
+            return new SuccessResult(Messages.Updated);
+        }
+        public IResult Delete(Car car)
+        {
+            if (car.CarName != null)
+            {
+                return new ErrorResult(Messages.Alert);
+            }
+            _carDal.Delete(car);
+            return new SuccessResult(Messages.Deleted);
         }
 
         public IDataResult<List<Car>> GetAll()
@@ -35,7 +59,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.Listed);
         }
 
         public IDataResult<List<Car>> GetAllByBrandId(int Id)
@@ -55,7 +79,9 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDto>> GetCarDetailDtos()
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailDtos(), Messages.CarListed);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailDtos(), Messages.Listed);
         }
+
+
     }
 }

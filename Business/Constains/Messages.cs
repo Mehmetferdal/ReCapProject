@@ -7,9 +7,12 @@ namespace Business.Constains
 {
     public static class Messages
     {
-        public static string CarAdded = "Araç Eklendi";
-        public static string CarNameInvalid = "Araç İsmi Geçersiz";
-        internal static string MaintenanceTime = "Araçlar Kullanımda Değil";
-        internal static string CarListed = "Araçlar Listelendi";
+        public static string Added = "Eklendi";
+        public static string Updated = "Güncellendi";
+        public static string Deleted = "Silindi";
+        public static string NameInvalid = "İsim Geçersiz en az 2 karekterden oluşmalı";
+        public static string MaintenanceTime = "Araçlar Kullanımda Değil";
+        public static string Listed = "Listenme Gerçekleşti";
+        public static string Alert = "İşlem Başarısız";
     }
 }
