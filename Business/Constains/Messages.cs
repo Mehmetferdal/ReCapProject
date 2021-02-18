@@ -12,7 +12,7 @@ namespace Business.Constains
         public static string Deleted = "Silindi";
         public static string NameInvalid = "İsim Geçersiz en az 2 karekterden oluşmalı";
         public static string MaintenanceTime = "Araçlar Kullanımda Değil";
-        public static string Listed = "Listenme Gerçekleşti";
+        public static string Listed = "Listelenme Gerçekleşti";
         public static string Alert = "İşlem Başarısız";
     }
 }
