@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class CustomerManager:ICustomerService
+    public class CustomerManager : ICustomerService
     {
         ICustomerDal _customerDal;
 
@@ -38,9 +38,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.Listed);
         }
 
-        public IDataResult<List<Customer>> GetById(int rentalId)
+        public IDataResult<List<Customer>> GetById(int customerId)
         {
-            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(c => c.Id == rentalId)); ;
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(c => c.Id == customerId), Messages.Listed); ;
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetById(int rentalId)
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(c => c.Id == rentalId)); ;
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(c => c.Id == rentalId), Messages.Listed); ;
         }
 
 

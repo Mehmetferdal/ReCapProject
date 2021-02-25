@@ -35,7 +35,7 @@ namespace Business.Concrete
                 return new ErrorResult(Messages.Alert);
             }
             _colorDal.Delete(color);
-            return new SuccessResult(Messages.Added);
+            return new SuccessResult(Messages.Deleted);
         }
         public IResult Update(Color color)
         {
@@ -44,19 +44,19 @@ namespace Business.Concrete
                 return new ErrorResult(Messages.Alert);
             }
             _colorDal.Update(color);
-            return new SuccessResult(Messages.Added);
+            return new SuccessResult(Messages.Updated);
         }
         public IDataResult<List<Color>> GetAll()
         {
-            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(),Messages.Listed);
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(), Messages.Listed);
         }
 
         public IDataResult<List<Color>> GetById(int colorId)
         {
-            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(c => c.ColorId == colorId));
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(c => c.ColorId == colorId), Messages.Listed);
 
         }
 
-        
+
     }
 }
