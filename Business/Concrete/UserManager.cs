@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constains;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,7 +20,7 @@ namespace Business.Concrete
         {
             _userDal = userDal;
         }
-
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
             _userDal.Add(user);
@@ -32,7 +34,7 @@ namespace Business.Concrete
         }
         public IResult Update(User user)
         {
-            _userDal.Add(user);
+            _userDal.Update(user);
             return new SuccessResult(Messages.Updated); ;
         }
         public IDataResult<List<User>> GetAll()
