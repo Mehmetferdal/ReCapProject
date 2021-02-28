@@ -14,5 +14,6 @@ namespace Business.Constains
         public static string MaintenanceTime = "Araçlar Kullanımda Değil";
         public static string Listed = "Listelenme Gerçekleşti";
         public static string Alert = "İşlem Başarısız";
+        public static string Limit = "Limit Aşıldı Lütfen Veritabanınız Kontrol Ediniz?";
     }
 }
