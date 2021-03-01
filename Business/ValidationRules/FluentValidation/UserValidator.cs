@@ -13,7 +13,6 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(u => u.Firstname).NotEmpty().WithMessage("Kullanıcı Adı Boş Geçilemez");
             RuleFor(u => u.LastName).NotEmpty();
             RuleFor(u => u.Email).EmailAddress();
-            RuleFor(u => u.Password).NotEmpty();
         }
     }
 }
